@@ -1,11 +1,8 @@
 # =====================================================
-# PROYECTO JAVA SPRING BOOT (ARQUITECTURA POR CAPAS)
+# Gitignore para JAVA
 # =====================================================
-# Este .gitignore está optimizado para proyectos corporativos
-# con estructura modular o en capas (controller, service, repository, model).
-# Compatible con Maven y Gradle, y con los IDEs más utilizados (IntelliJ, NetBeans, Eclipse, VS Code).
-# =====================================================
-
+#
+#
 # =====================================================
 # COMPILACIÓN Y ARTEFACTOS GENERADOS
 # =====================================================
