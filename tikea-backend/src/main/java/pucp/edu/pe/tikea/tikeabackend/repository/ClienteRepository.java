@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ClienteRepository extends JpaRepository<Cliente,Integer> {
-    List<Cliente> findAllClientes();
     Optional<Cliente> findClienteById(@Param("id") Integer id);
     Optional<Cliente> findByCorreoIgnoreCase(String correo);
 

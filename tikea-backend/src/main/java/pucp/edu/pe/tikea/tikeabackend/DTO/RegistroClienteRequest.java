@@ -4,6 +4,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
+@Data
 public class RegistroClienteRequest {
     // Atributos usuario
     @NotBlank private String nombre;

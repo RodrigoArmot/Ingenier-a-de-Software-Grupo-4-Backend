@@ -1,11 +1,15 @@
 package pucp.edu.pe.tikea.tikeabackend.DTO;
 
+import lombok.AllArgsConstructor;
 import  lombok.Builder;
 import  lombok.Data;
+import lombok.NoArgsConstructor;
 import pucp.edu.pe.tikea.tikeabackend.model.TipoCliente;
 import pucp.edu.pe.tikea.tikeabackend.model.TipoEstado;
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ClienteResponse {
     private Integer idCliente;
     private Integer idUsuario;

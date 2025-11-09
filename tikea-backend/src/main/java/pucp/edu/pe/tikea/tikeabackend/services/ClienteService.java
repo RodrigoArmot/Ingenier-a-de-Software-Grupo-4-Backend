@@ -3,7 +3,11 @@ package pucp.edu.pe.tikea.tikeabackend.services;
 import jakarta.transaction.Transactional;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import pucp.edu.pe.tikea.tikeabackend.DTO.ClienteResponse;
+import pucp.edu.pe.tikea.tikeabackend.DTO.LoginRequest;
+import pucp.edu.pe.tikea.tikeabackend.DTO.RegistroClienteRequest;
 import pucp.edu.pe.tikea.tikeabackend.model.Cliente;
+import pucp.edu.pe.tikea.tikeabackend.model.TipoCliente;
 import pucp.edu.pe.tikea.tikeabackend.model.TipoEstado;
 import pucp.edu.pe.tikea.tikeabackend.repository.ClienteRepository;
 
@@ -22,42 +26,51 @@ public class ClienteService {
         this.encoder = encoder;
     }
     @Transactional
-    public List<Cliente> listar() {
+    public List<ClienteResponse> listar() {
         return clienteRepository.findAll().stream().map(this::toDTO).toList();
     }
     // agregar usuario
-    ublic ClienteResponseDTO registrar( dto) {
+    public ClienteResponse registrar(RegistroClienteRequest dto) {
         Cliente c = new Cliente();
-        c.setNombre(dto.nombre);
-        c.setApellido(dto.apellido);
-        c.setCorreo(dto.correo);
-        c.setTelefono(dto.telefono);
-        c.setNombreUser(dto.nombreUser);
-        c.setDni(dto.dni);
-
-        c.setPasswordHash(encoder.encode(dto.password)); // HASH
+        c.setNombre(dto.getNombre());
+        c.setApellido(dto.getApellido());
+        c.setCorreo(dto.getCorreo());
+        c.setTelefono(dto.getTelefono());
+        c.setNombreUser(dto.getNombreUser());
+        c.setDNI(dto.getDni());
+        c.setPassword(encoder.encode(dto.getPassword())); // HASH
         c.setEstado(TipoEstado.ACTIVO);
         c.setFechaRegistro(LocalDateTime.now());
+        c.setDireccion(dto.getDireccion());
+        c.setPuntos_promociones(dto.getPuntosPromociones() == null ? 0 : dto.getPuntosPromociones());
+        c.setTipoCliente(TipoCliente.valueOf(dto.getTipoCliente().toUpperCase()));
 
-        c.setDireccion(dto.direccion);
-        c.setPuntosPromociones(dto.puntosPromociones == null ? 0 : dto.puntosPromociones);
-        c.setTipoCliente(TipoCliente.valueOf(dto.tipoCliente.toUpperCase()));
-
-        Cliente saved = repo.save(c); // inserta en usuario + cliente (misma PK)
-        return toDTO(saved);
+        return toDTO(clienteRepository.save(c));
     }
-
     // login
-    public Cliente login(String Correo, String Password) {
-        Cliente c = clienteRepository.findByCorreoIgnoreCase(Correo)
+    public ClienteResponse login(LoginRequest dto) {
+        Cliente c = clienteRepository.findByCorreoIgnoreCase(dto.getCorreo())
                 .orElseThrow(() -> new IllegalArgumentException("Credenciales inválidas"));
-        if(!encoder.matches(Password, c.getPassword())) {
+        if(!encoder.matches(dto.getPassword(), c.getPassword())) {
                 throw  new IllegalArgumentException("Password incorrecto");
             }
             c.setFechaUltimoAcceso(LocalDateTime.now());
-            return clienteRepository.save(c);
+            return toDTO(clienteRepository.save(c));
     }
 
-
-
+    private ClienteResponse toDTO(Cliente c) {
+        ClienteResponse dto = new ClienteResponse();
+        dto.setIdCliente(c.getId());
+        dto.setNombre(c.getNombre());
+        dto.setDni(c.getApellido());
+        dto.setCorreo(c.getCorreo());
+        dto.setTelefono(c.getTelefono());
+        dto.setNombreUser(c.getNombreUser());
+        dto.setDni(c.getDNI());
+        dto.setEstado(c.getEstado());
+        dto.setDireccion(c.getDireccion());
+        dto.setPuntosPromociones(c.getPuntos_promociones());
+        dto.setTipoCliente(c.getTipoCliente());
+        return dto;
+    }
 }

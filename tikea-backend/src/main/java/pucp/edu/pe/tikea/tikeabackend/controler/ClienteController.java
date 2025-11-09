@@ -25,7 +25,7 @@ public class ClienteController {
 
     @PostMapping("/registro")
     public ClienteResponse registrar(@Valid @RequestBody RegistroClienteRequest dto,String password) {
-        return clienteService.registrar(dto, password);
+        return clienteService.registrar(dto);
     }
 
     @PostMapping("/login")
