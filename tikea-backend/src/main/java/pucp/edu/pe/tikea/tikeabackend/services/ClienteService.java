@@ -30,7 +30,7 @@ public class ClienteService {
     public List<ClienteResponse> listar() {
         return clienteRepository.findAll().stream().map(this::toDTO).toList();
     }
-    // agregar usuario
+    // agregar usuarios
     public ClienteResponse registrar(RegistroClienteRequest dto) {
         Cliente c = new Cliente();
         c.setNombre(dto.getNombre());

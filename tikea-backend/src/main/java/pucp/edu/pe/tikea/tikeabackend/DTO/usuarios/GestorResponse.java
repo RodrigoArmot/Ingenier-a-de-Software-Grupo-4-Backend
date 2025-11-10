@@ -1,4 +1,4 @@
-package pucp.edu.pe.tikea.tikeabackend.DTO.usuario;
+package pucp.edu.pe.tikea.tikeabackend.DTO.usuarios;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

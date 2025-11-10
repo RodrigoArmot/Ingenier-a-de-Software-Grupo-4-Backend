@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class RegistroClienteRequest {
-    // Atributos usuario
+    // Atributos usuarios
     @NotBlank private String nombre;
     @NotBlank private String apellido;
     @Email @NotBlank private String correo;

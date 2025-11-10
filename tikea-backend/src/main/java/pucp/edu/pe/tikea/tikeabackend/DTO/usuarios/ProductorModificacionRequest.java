@@ -1,7 +1,5 @@
-package pucp.edu.pe.tikea.tikeabackend.DTO.usuario;
+package pucp.edu.pe.tikea.tikeabackend.DTO.usuarios;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
