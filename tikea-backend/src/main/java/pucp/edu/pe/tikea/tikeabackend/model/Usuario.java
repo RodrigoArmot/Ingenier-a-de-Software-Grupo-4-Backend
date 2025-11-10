@@ -33,7 +33,7 @@ public class Usuario {
     @Column(name = "nombreUsuario")
     private String nombreUser;
 
-    @Column(name = "contraseña")
+    @Column(name = "password")
     private String password;
 
     private TipoEstado estado;
