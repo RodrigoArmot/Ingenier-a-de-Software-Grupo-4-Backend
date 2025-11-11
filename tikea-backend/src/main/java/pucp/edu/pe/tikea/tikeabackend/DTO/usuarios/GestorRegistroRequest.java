@@ -1,26 +1,33 @@
 package pucp.edu.pe.tikea.tikeabackend.DTO.usuarios;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import pucp.edu.pe.tikea.tikeabackend.model.TipoEstado;
 import pucp.edu.pe.tikea.tikeabackend.model.usuarios.TipoArea;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class GestorResponse {
-    //Datos de heredados de Usuario
-    private Integer idUsuario;
+public class GestorRegistroRequest {
+    @NotBlank
     private String nombre;
+    @NotBlank
     private String apellidos;
-    private String correo;
+    @Email
+    @NotBlank
+    private String email;
+    @NotBlank
+    private String password;
+    @NotBlank
     private String telefono;
+    @NotBlank
     private String nombreUsuario;
+    @NotBlank
     private String dni;
-    private TipoEstado estado;
-    private Integer activo;
 
-    //Datos Gestor
-    private TipoArea areaGestion;
+    @NotNull
+    private TipoArea tipoArea;
 }
