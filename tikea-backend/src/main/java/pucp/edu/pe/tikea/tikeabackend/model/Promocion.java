@@ -49,7 +49,8 @@ public class Promocion {
     private EstadoActividad estado;
 
     private Timestamp fechaCreacion;
-    private Timestamp fechaUltimaCreacion;
+    @Column(name = "fechaUltimaCreacion")
+    private Timestamp fechaUltimaModificacion;
     private Integer activo;
 
     @ManyToOne
