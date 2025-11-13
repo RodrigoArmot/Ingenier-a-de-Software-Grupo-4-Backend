@@ -1,12 +1,12 @@
-package pucp.edu.pe.tikea.tikeabackend.DTO;
+package pucp.edu.pe.tikea.tikeabackend.DTO.promocion;
 
 import java.sql.Timestamp;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import pucp.edu.pe.tikea.tikeabackend.model.EstadoActividad;
-import pucp.edu.pe.tikea.tikeabackend.model.TipoPromocion;
-import pucp.edu.pe.tikea.tikeabackend.model.TipoRestriccionPromocion;
+import pucp.edu.pe.tikea.tikeabackend.model.promocion.EstadoActividad;
+import pucp.edu.pe.tikea.tikeabackend.model.promocion.TipoPromocion;
+import pucp.edu.pe.tikea.tikeabackend.model.promocion.TipoRestriccionPromocion;
 
 @Data
 @NoArgsConstructor

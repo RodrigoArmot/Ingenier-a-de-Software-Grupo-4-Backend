@@ -1,11 +1,11 @@
-package pucp.edu.pe.tikea.tikeabackend.controler;
+package pucp.edu.pe.tikea.tikeabackend.controler.promocion;
 
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
-import pucp.edu.pe.tikea.tikeabackend.DTO.PromocionRegistroRequest;
-import pucp.edu.pe.tikea.tikeabackend.DTO.PromocionResponse;
-import pucp.edu.pe.tikea.tikeabackend.DTO.RegistroClienteRequest;
-import pucp.edu.pe.tikea.tikeabackend.services.PromocionService;
+import pucp.edu.pe.tikea.tikeabackend.DTO.promocion.PromocionRegistroRequest;
+import pucp.edu.pe.tikea.tikeabackend.DTO.promocion.PromocionResponse;
+import pucp.edu.pe.tikea.tikeabackend.DTO.usuarios.cliente.RegistroClienteRequest;
+import pucp.edu.pe.tikea.tikeabackend.services.promocion.PromocionService;
 
 import java.util.List;
 

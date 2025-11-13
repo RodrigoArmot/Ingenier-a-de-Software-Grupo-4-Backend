@@ -1,13 +1,15 @@
-package pucp.edu.pe.tikea.tikeabackend.services;
+package pucp.edu.pe.tikea.tikeabackend.services.promocion;
 
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
-import pucp.edu.pe.tikea.tikeabackend.DTO.PromocionRegistroRequest;
-import pucp.edu.pe.tikea.tikeabackend.DTO.PromocionResponse;
-import pucp.edu.pe.tikea.tikeabackend.DTO.RegistroClienteRequest;
-import pucp.edu.pe.tikea.tikeabackend.model.*;
-import pucp.edu.pe.tikea.tikeabackend.repository.EventoRepository;
-import pucp.edu.pe.tikea.tikeabackend.repository.PromocionRepository;
+import pucp.edu.pe.tikea.tikeabackend.DTO.promocion.PromocionRegistroRequest;
+import pucp.edu.pe.tikea.tikeabackend.DTO.promocion.PromocionResponse;
+import pucp.edu.pe.tikea.tikeabackend.DTO.usuarios.cliente.RegistroClienteRequest;
+import pucp.edu.pe.tikea.tikeabackend.model.infraestructura.Evento;
+import pucp.edu.pe.tikea.tikeabackend.model.promocion.EstadoActividad;
+import pucp.edu.pe.tikea.tikeabackend.model.promocion.Promocion;
+import pucp.edu.pe.tikea.tikeabackend.repository.infraestructura.EventoRepository;
+import pucp.edu.pe.tikea.tikeabackend.repository.promocion.PromocionRepository;
 
 import java.sql.Timestamp;
 import java.time.Instant;
