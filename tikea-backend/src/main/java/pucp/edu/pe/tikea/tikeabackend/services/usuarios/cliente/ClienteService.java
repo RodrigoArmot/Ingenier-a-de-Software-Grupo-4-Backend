@@ -1,4 +1,4 @@
-package pucp.edu.pe.tikea.tikeabackend.services.Cliente;
+package pucp.edu.pe.tikea.tikeabackend.services.usuarios.cliente;
 
 import jakarta.transaction.Transactional;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

@@ -1,4 +1,4 @@
-package pucp.edu.pe.tikea.tikeabackend.services;
+package pucp.edu.pe.tikea.tikeabackend.services.promocion;
 
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
