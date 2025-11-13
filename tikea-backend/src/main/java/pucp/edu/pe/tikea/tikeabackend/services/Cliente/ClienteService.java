@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import pucp.edu.pe.tikea.tikeabackend.DTO.usuarios.cliente.ClienteModficiacionRequest;
 import pucp.edu.pe.tikea.tikeabackend.DTO.usuarios.cliente.ClienteResponse;
 import pucp.edu.pe.tikea.tikeabackend.DTO.usuarios.cliente.LoginRequest;
-import pucp.edu.pe.tikea.tikeabackend.DTO.RegistroClienteRequest;
+import pucp.edu.pe.tikea.tikeabackend.DTO.usuarios.cliente.RegistroClienteRequest;
 import pucp.edu.pe.tikea.tikeabackend.model.usuarios.Cliente;
 import pucp.edu.pe.tikea.tikeabackend.model.usuarios.TipoCliente;
 import pucp.edu.pe.tikea.tikeabackend.model.usuarios.TipoEstado;

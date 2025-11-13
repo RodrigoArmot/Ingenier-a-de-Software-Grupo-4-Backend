@@ -1,4 +1,4 @@
-package pucp.edu.pe.tikea.tikeabackend.DTO;
+package pucp.edu.pe.tikea.tikeabackend.DTO.promocion;
 
 import java.sql.Timestamp;
 import jakarta.validation.constraints.NotBlank;
