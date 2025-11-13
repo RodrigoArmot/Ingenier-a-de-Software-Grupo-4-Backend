@@ -6,7 +6,7 @@ import pucp.edu.pe.tikea.tikeabackend.DTO.usuarios.cliente.ClienteModficiacionRe
 import pucp.edu.pe.tikea.tikeabackend.DTO.usuarios.cliente.ClienteResponse;
 import pucp.edu.pe.tikea.tikeabackend.DTO.usuarios.cliente.LoginRequest;
 import pucp.edu.pe.tikea.tikeabackend.DTO.usuarios.cliente.RegistroClienteRequest;
-import pucp.edu.pe.tikea.tikeabackend.services.Cliente.ClienteService;
+import pucp.edu.pe.tikea.tikeabackend.services.usuarios.cliente.ClienteService;
 
 import java.util.List;
 
