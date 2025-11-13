@@ -1,4 +1,4 @@
-package pucp.edu.pe.tikea.tikeabackend.repository;
+package pucp.edu.pe.tikea.tikeabackend.repository.promocion;
 
 import java.sql.Timestamp;
 import java.util.List;

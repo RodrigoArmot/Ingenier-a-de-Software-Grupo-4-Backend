@@ -1,4 +1,4 @@
-package pucp.edu.pe.tikea.tikeabackend.repository;
+package pucp.edu.pe.tikea.tikeabackend.repository.infraestructura;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

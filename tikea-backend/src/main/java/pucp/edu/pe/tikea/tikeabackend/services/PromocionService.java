@@ -8,8 +8,8 @@ import pucp.edu.pe.tikea.tikeabackend.DTO.usuarios.cliente.RegistroClienteReques
 import pucp.edu.pe.tikea.tikeabackend.model.infraestructura.Evento;
 import pucp.edu.pe.tikea.tikeabackend.model.promocion.EstadoActividad;
 import pucp.edu.pe.tikea.tikeabackend.model.promocion.Promocion;
-import pucp.edu.pe.tikea.tikeabackend.repository.EventoRepository;
-import pucp.edu.pe.tikea.tikeabackend.repository.PromocionRepository;
+import pucp.edu.pe.tikea.tikeabackend.repository.infraestructura.EventoRepository;
+import pucp.edu.pe.tikea.tikeabackend.repository.promocion.PromocionRepository;
 
 import java.sql.Timestamp;
 import java.time.Instant;

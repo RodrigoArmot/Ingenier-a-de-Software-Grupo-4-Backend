@@ -1,4 +1,4 @@
-package pucp.edu.pe.tikea.tikeabackend.repository.cliente;
+package pucp.edu.pe.tikea.tikeabackend.repository.usuarios.cliente;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import pucp.edu.pe.tikea.tikeabackend.model.usuarios.Cliente;

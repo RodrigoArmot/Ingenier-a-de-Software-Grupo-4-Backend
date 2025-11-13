@@ -10,7 +10,7 @@ import pucp.edu.pe.tikea.tikeabackend.DTO.usuarios.cliente.RegistroClienteReques
 import pucp.edu.pe.tikea.tikeabackend.model.usuarios.Cliente;
 import pucp.edu.pe.tikea.tikeabackend.model.usuarios.TipoCliente;
 import pucp.edu.pe.tikea.tikeabackend.model.usuarios.TipoEstado;
-import pucp.edu.pe.tikea.tikeabackend.repository.cliente.ClienteRepository;
+import pucp.edu.pe.tikea.tikeabackend.repository.usuarios.cliente.ClienteRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;
