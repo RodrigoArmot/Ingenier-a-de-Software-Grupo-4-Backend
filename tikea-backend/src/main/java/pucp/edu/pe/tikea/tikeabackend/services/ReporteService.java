@@ -5,22 +5,26 @@ package pucp.edu.pe.tikea.tikeabackend.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pucp.edu.pe.tikea.tikeabackend.DTO.ReporteEventoDTO;
+import pucp.edu.pe.tikea.tikeabackend.DTO.ReporteEventoDetalle;
 import pucp.edu.pe.tikea.tikeabackend.DTO.ReporteRequestDTO;
 
+import pucp.edu.pe.tikea.tikeabackend.repository.EventoRepository;
 import pucp.edu.pe.tikea.tikeabackend.repository.TicketEspecificoRepository;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
 @Service
 public class ReporteService {
-    
+
     @Autowired
     private TicketEspecificoRepository ticketEspecificoRepository;
     // -------------------------------------------------
-
+    @Autowired
+    private EventoRepository eventoRepository;
 
     public List<ReporteEventoDTO> generarReporteEventos(ReporteRequestDTO requestDTO) {
 
@@ -35,5 +39,12 @@ public class ReporteService {
         List<ReporteEventoDTO> reporte = ticketEspecificoRepository.generarReporteAgrupadoPorEvento(inicio, fin);
 
         return reporte;
+    }
+    public List<ReporteEventoDetalle> generarReporteDetalladoPorFechaEvento(ReporteRequestDTO requestDTO) {
+        LocalDate inicio = requestDTO.getFechaInicio();
+        LocalDate fin = requestDTO.getFechaFin();
+
+        // Llama a la nueva consulta del repositorio
+        return eventoRepository.generarReporteDetalladoPorFechaEvento(inicio, fin);
     }
 }

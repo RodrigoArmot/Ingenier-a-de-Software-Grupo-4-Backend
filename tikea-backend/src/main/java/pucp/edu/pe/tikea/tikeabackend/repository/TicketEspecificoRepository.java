@@ -16,7 +16,7 @@ import java.util.List;
 public interface TicketEspecificoRepository extends JpaRepository<TicketEspecifico, Integer> {
 
 
-    @Query("SELECT new pucp.edu.pe.tikea.tikeabackend.dto.ReporteEventoDTO( " +
+    @Query("SELECT new pucp.edu.pe.tikea.tikeabackend.DTO.ReporteEventoDTO( " +
             "t.evento.idEvento, " +
             "t.evento.nombreEvento, " +
             "COUNT(t.idTicketEspecifico), " +
