@@ -21,6 +21,7 @@ public class ProductorResponse {
     private String nombreUsuario;
     private String DNI;
     private TipoEstado estado;
+    private Integer activo;
 
     // Datos del Productor
     private GestorResponse gestor;
