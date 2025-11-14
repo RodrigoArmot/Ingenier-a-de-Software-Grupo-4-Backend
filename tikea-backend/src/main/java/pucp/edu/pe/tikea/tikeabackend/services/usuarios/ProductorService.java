@@ -8,10 +8,8 @@ import pucp.edu.pe.tikea.tikeabackend.DTO.usuarios.ProductorResponse;
 import pucp.edu.pe.tikea.tikeabackend.DTO.usuarios.GestorResponse;
 import pucp.edu.pe.tikea.tikeabackend.model.usuarios.Productor;
 import pucp.edu.pe.tikea.tikeabackend.model.usuarios.Gestor;
-import pucp.edu.pe.tikea.tikeabackend.model.usuarios.TipoEstado;
 import pucp.edu.pe.tikea.tikeabackend.model.usuarios.TipoEstadoProductor;
 import lombok.RequiredArgsConstructor;
-import jakarta.persistence.EntityManager;
 import pucp.edu.pe.tikea.tikeabackend.repository.usuarios.GestorRepository;
 import pucp.edu.pe.tikea.tikeabackend.repository.usuarios.ProductorRepository;
 
@@ -27,7 +25,6 @@ public class ProductorService {
 
     private final ProductorRepository productorRepository;
     private final GestorRepository gestorRepository;
-    private final EntityManager entityManager;
 
     // =============== CREATE ===============
     public ProductorResponse registrarProductor(ProductorRegistroRequest productorRegistroRequest) {
@@ -55,7 +52,6 @@ public class ProductorService {
         productor.setPassword(productorRegistroRequest.getPassword());
         productor.setDNI(productorRegistroRequest.getDNI());
         productor.setGestor(gestor);
-        productor.setEstado(TipoEstado.ACTIVO);
         productor.setRazonSocial(productorRegistroRequest.getRazonSocial());
         productor.setRUC(productorRegistroRequest.getRUC());
         productor.setDireccionFisica(productorRegistroRequest.getDireccionFisica());
@@ -68,10 +64,6 @@ public class ProductorService {
         // Guardar en la BD
         Productor productorGuardado = productorRepository.save(productor);
 
-        // Refrescar la entidad para obtener el valor de activo de la BD
-        productorRepository.flush();
-        entityManager.refresh(productorGuardado);
-
         // Retornar como DTO
         return convertirAResponseDTO(productorGuardado);
     }
@@ -80,11 +72,6 @@ public class ProductorService {
     public ProductorResponse obtenerProductor(Integer idProductor) {
         Productor productor = productorRepository.findById(idProductor)
                 .orElseThrow(() -> new RuntimeException("Productor no encontrado con ID: " + idProductor));
-
-        // Forzar carga de relaciones
-        if (productor.getGestor() != null) {
-            productor.getGestor().getNombre();
-        }
 
         return convertirAResponseDTO(productor);
     }
@@ -167,7 +154,6 @@ public class ProductorService {
         productorRepository.delete(productor);
     }
 
-    // =============== MÉTODOS AUXILIARES ===============
     private ProductorResponse convertirAResponseDTO(Productor productor) {
         ProductorResponse dto = new ProductorResponse();
         dto.setIdProductor(productor.getIdUsuario());
@@ -178,7 +164,6 @@ public class ProductorService {
         dto.setNombreUsuario(productor.getNombreUser());
         dto.setDNI(productor.getDNI());
         dto.setEstado(productor.getEstado());
-        dto.setActivo(productor.getActivo());
         dto.setRazonSocial(productor.getRazonSocial());
         dto.setRUC(productor.getRUC());
         dto.setDireccionFisica(productor.getDireccionFisica());
@@ -199,7 +184,6 @@ public class ProductorService {
             gestorDTO.setNombreUsuario(productor.getGestor().getNombreUser());
             gestorDTO.setDni(productor.getGestor().getDNI());
             gestorDTO.setEstado(productor.getGestor().getEstado());
-            gestorDTO.setActivo(productor.getGestor().getActivo());
             gestorDTO.setAreaGestion(productor.getGestor().getTipoArea());
             dto.setGestor(gestorDTO);
         }
