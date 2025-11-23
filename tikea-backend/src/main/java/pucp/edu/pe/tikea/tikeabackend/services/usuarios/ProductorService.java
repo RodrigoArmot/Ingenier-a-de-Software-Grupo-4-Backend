@@ -60,7 +60,7 @@ public class ProductorService {
         productor.setRUC(productorRegistroRequest.getRUC());
         productor.setDireccionFisica(productorRegistroRequest.getDireccionFisica());
         productor.setTipoEstadoProductor(productorRegistroRequest.getTipoEstadoProductor());
-        productor.setDocumentacionFisica(productorRegistroRequest.getDocumentacionFisica());
+        productor.setDocumentacionAdjunta(productorRegistroRequest.getDocumentacionFisica());
         productor.setLocalesRegistrados(0);
         productor.setEventosRegistrados(0);
         productor.setPromocionesCreadas(0);
@@ -150,7 +150,7 @@ public class ProductorService {
             productor.setTipoEstadoProductor(request.getTipoEstadoProductor());
         }
         if (request.getDocumentacionFisica() != null) {
-            productor.setDocumentacionFisica(request.getDocumentacionFisica());
+            productor.setDocumentacionAdjunta(request.getDocumentacionFisica());
         }
 
         // Guardar cambios
