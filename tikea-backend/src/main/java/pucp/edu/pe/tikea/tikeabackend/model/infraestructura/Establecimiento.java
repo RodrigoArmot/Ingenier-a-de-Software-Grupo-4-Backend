@@ -46,8 +46,8 @@ public class Establecimiento {
     @Column(name ="estado")
     private TipoEstadoLocal estado;
 
-    @Column(name ="documentacionAdjunta")
     @Lob
+    @Column(name = "documentacionAdjunta", columnDefinition = "LONGBLOB")
     private byte[] documentacionAdjunta;
 
     @Column(name ="fechaVerificacion")

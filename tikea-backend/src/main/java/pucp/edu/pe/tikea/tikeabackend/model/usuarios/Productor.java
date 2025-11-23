@@ -35,9 +35,9 @@ public class Productor extends Usuario {
     @Column(name = "estadoProductor")
     private TipoEstadoProductor tipoEstadoProductor;
 
-    @Column(name = "documentacionAdjunta")
     @Lob
-    private byte[] documentacionFisica;
+    @Column(name = "documentacionAdjunta", columnDefinition = "LONGBLOB")
+    private byte[] documentacionAdjunta;
 
     @Column(name = "localesRegistrados")
     private int localesRegistrados;
