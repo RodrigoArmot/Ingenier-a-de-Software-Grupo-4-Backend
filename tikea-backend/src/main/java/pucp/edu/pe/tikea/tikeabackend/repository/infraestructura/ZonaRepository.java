@@ -8,6 +8,7 @@ import pucp.edu.pe.tikea.tikeabackend.model.infraestructura.Zona;
 
 import java.util.List;
 
+@Repository
 public interface ZonaRepository extends JpaRepository<Zona, Integer> {
     List<Zona> findByEstablecimiento_IdEstablecimientoAndActivo(Integer idEstablecimiento, Integer activo);
 }
