@@ -1,4 +1,4 @@
-package pucp.edu.pe.tikea.tikeabackend.services.Ventas;
+package pucp.edu.pe.tikea.tikeabackend.services.venta;
 
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
@@ -7,8 +7,8 @@ import pucp.edu.pe.tikea.tikeabackend.DTO.Venta.TicketResponse;
 import pucp.edu.pe.tikea.tikeabackend.model.infraestructura.*;
 import pucp.edu.pe.tikea.tikeabackend.model.usuarios.Cliente;
 import pucp.edu.pe.tikea.tikeabackend.model.venta.Reserva;
-import pucp.edu.pe.tikea.tikeabackend.repository.Ventas.ReservaRepository;
-import pucp.edu.pe.tikea.tikeabackend.repository.Ventas.TicketSpecificoRepository;
+import pucp.edu.pe.tikea.tikeabackend.repository.venta.ReservaRepository;
+import pucp.edu.pe.tikea.tikeabackend.repository.venta.TicketSpecificoRepository;
 import pucp.edu.pe.tikea.tikeabackend.repository.infraestructura.AsientoRepository;
 import pucp.edu.pe.tikea.tikeabackend.repository.infraestructura.EventoRepository;
 import pucp.edu.pe.tikea.tikeabackend.repository.infraestructura.ZonaRepository;
