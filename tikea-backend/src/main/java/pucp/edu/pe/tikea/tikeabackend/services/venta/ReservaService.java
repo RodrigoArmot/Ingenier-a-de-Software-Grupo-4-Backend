@@ -1,4 +1,4 @@
-package pucp.edu.pe.tikea.tikeabackend.services.Ventas;
+package pucp.edu.pe.tikea.tikeabackend.services.venta;
 
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
@@ -7,12 +7,11 @@ import pucp.edu.pe.tikea.tikeabackend.DTO.Venta.ReservaResponse;
 import pucp.edu.pe.tikea.tikeabackend.model.usuarios.Cliente;
 import pucp.edu.pe.tikea.tikeabackend.model.usuarios.Taquillero;
 import pucp.edu.pe.tikea.tikeabackend.model.venta.Reserva;
-import pucp.edu.pe.tikea.tikeabackend.repository.Ventas.ReservaRepository;
+import pucp.edu.pe.tikea.tikeabackend.repository.venta.ReservaRepository;
 import pucp.edu.pe.tikea.tikeabackend.repository.usuarios.TaquilleroRepository;
 import pucp.edu.pe.tikea.tikeabackend.repository.usuarios.cliente.ClienteRepository;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -104,7 +103,7 @@ public class ReservaService {
     }
 
     public List<ReservaResponse> listarReservasPorCliente(Integer idCliente){
-        List<Reserva> reservas = reservaRepository.findByCliente_IdCliente(idCliente);
+        List<Reserva> reservas = reservaRepository.findByCliente_IdUsuario(idCliente);
 
         return  reservas.stream().map(this::toDTO).toList();
     }
@@ -126,7 +125,7 @@ public class ReservaService {
     }
 
     public List<ReservaResponse> listarPorTaquillero(Integer idTaquillero) {
-        List<Reserva> reservas = reservaRepository.findByTaquillero_IdTaquillero(idTaquillero);
+        List<Reserva> reservas = reservaRepository.findByTaquillero_IdUsuario(idTaquillero);
 
         return reservas.stream()
                 .map(this::toDTO)

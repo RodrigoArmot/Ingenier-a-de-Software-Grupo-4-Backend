@@ -1,10 +1,10 @@
-package pucp.edu.pe.tikea.tikeabackend.controler.Ventas;
+package pucp.edu.pe.tikea.tikeabackend.controler.venta;
 
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 import pucp.edu.pe.tikea.tikeabackend.DTO.Venta.ReservaRequestDTO;
 import pucp.edu.pe.tikea.tikeabackend.DTO.Venta.ReservaResponse;
-import pucp.edu.pe.tikea.tikeabackend.services.Ventas.ReservaService;
+import pucp.edu.pe.tikea.tikeabackend.services.venta.ReservaService;
 
 import java.util.List;
 @RestController
