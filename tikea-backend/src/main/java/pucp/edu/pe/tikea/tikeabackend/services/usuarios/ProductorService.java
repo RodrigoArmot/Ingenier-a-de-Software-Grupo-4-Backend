@@ -113,6 +113,32 @@ public class ProductorService {
                 .collect(Collectors.toList());
     }
 
+    public List<ProductorResponse> obtenerProductoresPendientesPorGestor(Integer idGestor) {
+        // Si idGestor es nulo o 0, podríamos asumir que es un ADMIN buscando todo
+        if (idGestor == null || idGestor == 0) {
+            return productorRepository.findByTipoEstadoProductor(TipoEstadoProductor.PENDIENTE_VALIDACION)
+                    .stream().map(this::convertirAResponseDTO).collect(Collectors.toList());
+        }
+    
+        Gestor gestor = gestorRepository.findById(idGestor)
+                .orElseThrow(() -> new RuntimeException("Gestor no encontrado"));
+    
+        return productorRepository.findByTipoEstadoProductorAndGestor(TipoEstadoProductor.PENDIENTE_VALIDACION, gestor)
+                .stream()
+                .map(this::convertirAResponseDTO)
+                .collect(Collectors.toList());
+    }
+
+    public byte[] obtenerDocumentacion(Integer idProductor) {
+        Productor productor = productorRepository.findById(idProductor)
+                .orElseThrow(() -> new RuntimeException("Productor no encontrado"));
+    
+        if (productor.getDocumentacionAdjunta() == null) {
+            throw new RuntimeException("El productor no tiene documentación adjunta");
+        }
+        return productor.getDocumentacionAdjunta();
+    }
+
     // =============== UPDATE ===============
     public ProductorResponse actualizarProductor(Integer idProductor, ProductorModificacionRequest request) {
         Productor productor = productorRepository.findById(idProductor)
@@ -157,6 +183,17 @@ public class ProductorService {
         Productor productorActualizado = productorRepository.save(productor);
 
         return convertirAResponseDTO(productorActualizado);
+    }
+
+    public ProductorResponse validarProductor(Integer idProductor, TipoEstadoProductor nuevoEstado) {
+        Productor productor = productorRepository.findById(idProductor)
+                .orElseThrow(() -> new RuntimeException("Productor no encontrado"));
+    
+        productor.setTipoEstadoProductor(nuevoEstado);
+        // Actualizar fecha de verificación
+        productor.setFechaVerificacion(LocalDateTime.now()); 
+        
+        return convertirAResponseDTO(productorRepository.save(productor));
     }
 
     // =============== DELETE ===============
