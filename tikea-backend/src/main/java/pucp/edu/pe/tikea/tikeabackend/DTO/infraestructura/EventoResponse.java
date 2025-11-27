@@ -9,6 +9,7 @@ import pucp.edu.pe.tikea.tikeabackend.model.infraestructura.CategoriaEvento;
 import pucp.edu.pe.tikea.tikeabackend.model.infraestructura.EstadoEvento;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Data
@@ -28,4 +29,6 @@ public class EventoResponse {
     private EstadoEvento estado;
     private int aforoTotal;
     private Integer activo;
+    private LocalDateTime fechaVerificacion;
+    private byte[] banner;
 }
