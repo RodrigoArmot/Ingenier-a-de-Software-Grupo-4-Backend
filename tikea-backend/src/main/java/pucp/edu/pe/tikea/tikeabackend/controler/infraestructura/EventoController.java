@@ -8,6 +8,7 @@ import pucp.edu.pe.tikea.tikeabackend.model.infraestructura.CategoriaEvento;
 import pucp.edu.pe.tikea.tikeabackend.model.infraestructura.EstadoEvento;
 import pucp.edu.pe.tikea.tikeabackend.services.infraestructura.EventoService;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import java.time.LocalDate;
@@ -117,6 +118,32 @@ public class EventoController {
         return ResponseEntity.ok()
                 .contentType(MediaType.IMAGE_JPEG) // El navegador suele ser inteligente, pero JPEG es buen default
                 .body(bannerBytes);
+    }
+
+    @GetMapping("/gestor/{idGestor}/pendientes")
+    public List<EventoResponse> obtenerPendientesPorGestor(@PathVariable Integer idGestor) {
+        return eventoService.obtenerEventosPendientesPorGestor(idGestor);
+    }
+
+    @GetMapping("/{idEvento}/documentacion")
+    public ResponseEntity<byte[]> descargarDocumentacion(@PathVariable Integer idEvento) {
+        byte[] documento = eventoService.obtenerDocumentacion(idEvento);
+        
+        if (documento == null || documento.length == 0) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"sustento_evento_" + idEvento + ".pdf\"") // Asumimos PDF/Zip
+                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_OCTET_STREAM_VALUE)
+                .body(documento);
+    }
+
+    @PutMapping("/{idEvento}/validacion")
+    public EventoResponse validarEvento(
+            @PathVariable Integer idEvento, 
+            @RequestParam EstadoEvento nuevoEstado) {
+        return eventoService.validarEvento(idEvento, nuevoEstado);
     }
 
 }

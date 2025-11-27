@@ -19,6 +19,7 @@ import pucp.edu.pe.tikea.tikeabackend.repository.usuarios.ProductorRepository;
 import pucp.edu.pe.tikea.tikeabackend.repository.usuarios.GestorRepository;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -157,6 +158,38 @@ public class EventoService {
                 .stream()
                 .map(this::convertirAResponseDTO)
                 .collect(Collectors.toList());
+    }
+
+    public List<EventoResponse> obtenerEventosPendientesPorGestor(Integer idGestor) {
+        // Si es ADMIN (o id 0/null), devolvemos todos los pendientes
+        if (idGestor == null || idGestor == 0) {
+            return eventoRepository.findByEstado(EstadoEvento.PENDIENTE_VALIDACION)
+                    .stream().map(this::convertirAResponseDTO).collect(Collectors.toList());
+        }
+    
+        Gestor gestor = gestorRepository.findById(idGestor)
+                .orElseThrow(() -> new RuntimeException("Gestor no encontrado"));
+    
+        return eventoRepository.findByEstadoAndGestor(EstadoEvento.PENDIENTE_VALIDACION, gestor)
+                .stream()
+                .map(this::convertirAResponseDTO)
+                .collect(Collectors.toList());
+    }
+    
+    public byte[] obtenerDocumentacion(Integer idEvento) {
+        return eventoRepository.findDocumentacionById(idEvento);
+    }
+    
+    public EventoResponse validarEvento(Integer idEvento, EstadoEvento nuevoEstado) {
+        Evento evento = eventoRepository.findById(idEvento)
+                .orElseThrow(() -> new RuntimeException("Evento no encontrado"));
+    
+        evento.setEstado(nuevoEstado);
+        evento.setFechaVerificacion(LocalDateTime.now());
+        
+        // Opcional: Si se rechaza, podrías liberar las fechas del local, etc.
+        
+        return convertirAResponseDTO(eventoRepository.save(evento));
     }
 
     // =============== UPDATE ===============
