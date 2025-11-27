@@ -96,6 +96,11 @@ public interface EventoRepository extends JpaRepository<Evento, Integer> {
                 @Param("idProductor") Integer idProductor // El ID del productor (que es un idUsuario)
     );
 
+    // Buscar por estado Y gestor
+    List<Evento> findByEstadoAndGestor(EstadoEvento estado, Gestor gestor);
 
+    // Query para obtener solo la documentación (optimización)
+    @Query("SELECT e.documentacionAdjunta FROM Evento e WHERE e.idEvento = :id")
+    byte[] findDocumentacionById(@Param("id") Integer id);
 
 }

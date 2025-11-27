@@ -5,7 +5,8 @@ public enum EstadoEvento {
     PENDIENTE_VALIDACION("Pendiente de validacion","La persona responsable de la autorizacion aun lo esta evaluando"),
     FINALIZADO("Finalizado", "Evento finalizado"),
     AGOTADO("Agotado", "Evento con entradas agotadas"),
-    PUBLICADO("Publicado", "Evento publicado");
+    RECHAZADO("Rechazado","La persona responsable ha rechazado la accion"),
+    PUBLICADO("Publicado", "La persona responsable ha autorizado la accion y el evento ha sido publicado");
 
 
     private final String nombre;
