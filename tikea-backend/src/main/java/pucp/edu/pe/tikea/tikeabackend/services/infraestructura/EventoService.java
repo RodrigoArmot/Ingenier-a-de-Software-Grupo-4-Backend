@@ -64,6 +64,9 @@ public class EventoService {
         evento.setHoraFin(request.getHoraFin());
         evento.setEstado(request.getEstado());
         evento.setAforoTotal(request.getAforoTotal());
+        evento.setDocumentacionAdjunta(request.getDocumentacionAdjunta());
+        evento.setBanner(request.getBanner());
+        evento.setEstado(EstadoEvento.PENDIENTE_VALIDACION);
 
         // Guardar en la BD
         Evento eventoGuardado = eventoRepository.save(evento);
@@ -210,6 +213,8 @@ public class EventoService {
         dto.setEstado(evento.getEstado());
         dto.setAforoTotal(evento.getAforoTotal());
         dto.setActivo(evento.getActivo());
+        dto.setFechaVerificacion(evento.getFechaVerificacion());
+        dto.setBanner(evento.getBanner());
 
         // Convertir Establecimiento a EstablecimientoResponse
         if (evento.getEstablecimiento() != null) {

@@ -41,4 +41,10 @@ public class EventoRegistroRequest {
 
     @Positive
     private int aforoTotal;
+
+    @NotNull
+    private byte[] documentacionAdjunta;
+
+    @NotNull
+    private byte[] banner;
 }

@@ -1,6 +1,7 @@
 package pucp.edu.pe.tikea.tikeabackend.model.infraestructura;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -71,6 +72,17 @@ public class Evento {
 
     @OneToMany(mappedBy = "evento")
     private List<Promocion> promociones;
+
+    @Lob
+    @Column(name = "documentacionAdjunta", columnDefinition="LONGBLOB")
+    private byte[] documentacionAdjunta;
+
+    @Lob
+    @Column(name = "banner", columnDefinition="LONGBLOB")
+    private byte[] banner;
+
+    @Column(name = "fechaVerificacion")
+    private LocalDateTime fechaVerificacion;
 
     public boolean estActivo(){
         return this.activo == 1;

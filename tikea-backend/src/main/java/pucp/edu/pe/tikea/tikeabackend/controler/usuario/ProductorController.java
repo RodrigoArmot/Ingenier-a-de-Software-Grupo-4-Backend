@@ -2,6 +2,10 @@ package pucp.edu.pe.tikea.tikeabackend.controler.usuario;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pucp.edu.pe.tikea.tikeabackend.DTO.usuarios.ProductorRegistroRequest;
 import pucp.edu.pe.tikea.tikeabackend.DTO.usuarios.ProductorModificacionRequest;
@@ -58,5 +62,29 @@ public class ProductorController {
     public void eliminarProductor(
             @PathVariable Integer idProductor) {
         productorService.eliminarProductor(idProductor);
+    }
+
+    @GetMapping("/gestor/{idGestor}/pendientes")
+    public List<ProductorResponse> obtenerPendientesPorGestor(@PathVariable Integer idGestor) {
+        return productorService.obtenerProductoresPendientesPorGestor(idGestor);
+    }
+
+    // Endpoint para descargar el archivo de sustento del productor
+    @GetMapping("/{idProductor}/documento")
+    public ResponseEntity<byte[]> descargarDocumentacion(@PathVariable Integer idProductor) {
+        byte[] documento = productorService.obtenerDocumentacion(idProductor);
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"sustento_productor_" + idProductor + ".pdf\"")
+                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_PDF_VALUE)
+                .body(documento);
+    }
+
+    // Endpoint para validar (PUT)
+    @PutMapping("/{idProductor}/validacion")
+    public ProductorResponse validarProductor(
+            @PathVariable Integer idProductor, 
+            @RequestParam TipoEstadoProductor nuevoEstado) {
+        return productorService.validarProductor(idProductor, nuevoEstado);
     }
 }

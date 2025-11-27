@@ -2,9 +2,11 @@ package pucp.edu.pe.tikea.tikeabackend.model.infraestructura;
 
 public enum EstadoEvento {
     CANCELADO("Cancelado", "Evento cancelado"),
+    PENDIENTE_VALIDACION("Pendiente de validacion","La persona responsable de la autorizacion aun lo esta evaluando"),
     FINALIZADO("Finalizado", "Evento finalizado"),
     AGOTADO("Agotado", "Evento con entradas agotadas"),
     PUBLICADO("Publicado", "Evento publicado");
+
 
     private final String nombre;
     private final String descripcion;
