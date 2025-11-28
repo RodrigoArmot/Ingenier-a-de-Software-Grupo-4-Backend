@@ -38,6 +38,8 @@ public class Usuario {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "estado")
+    @Enumerated(EnumType.STRING)
     private TipoEstado estado;
 
     @Column(name = "DNI")
