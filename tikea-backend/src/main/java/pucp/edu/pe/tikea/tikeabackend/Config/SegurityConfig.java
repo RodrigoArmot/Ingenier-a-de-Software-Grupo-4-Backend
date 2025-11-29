@@ -61,7 +61,7 @@ public class SegurityConfig {
     @CrossOrigin(origins = "https://primeraentrega.d1l98fq5qiu3d2.amplifyapp.com")
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:5173","https://primeraentrega.d1l98fq5qiu3d2.amplifyapp.com","https://di0lh5tbl9.execute-api.us-east-1.amazonaws.com")); // React local
+        configuration.setAllowedOrigins(List.of("http://localhost:5173","https://primeraentrega.d1l98fq5qiu3d2.amplifyapp.com","https://di0lh5tbl9.execute-api.us-east-1.amazonaws.com", "https://yaw0m5htqf.execute-api.us-east-1.amazonaws.com/")); // React local
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true);
